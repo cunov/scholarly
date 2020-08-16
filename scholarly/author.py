@@ -63,6 +63,8 @@ class Author:
         self.affiliation = soup.find('div', class_='gsc_prf_il').text
         self.interests = [i.text.strip() for i in
                           soup.find_all('a', class_='gsc_prf_inta')]
+        tmp = soup.find('div',class_='gsc_prf_il',id='gsc_prf_ivh')
+        self.email = tmp[tmp.rfind(' '):]
 
     def _fill_indices(self, soup):
         index = soup.find_all('td', class_='gsc_rsb_std')
